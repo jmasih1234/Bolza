@@ -9,6 +9,7 @@ struct BolzaApp: App {
         WindowGroup {
             RootView()
                 .environment(tutorService)
+                .preferredColorScheme(.dark)
         }
         .modelContainer(for: [
             UserProfile.self,

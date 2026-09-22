@@ -5,11 +5,13 @@ struct GlassCard<Content: View>: View {
     @ViewBuilder var content: () -> Content
 
     var body: some View {
+        let glass: Glass = if let tint {
+            .regular.tint(tint)
+        } else {
+            .regular
+        }
         content()
             .padding()
-            .glassEffect(
-                tint != nil ? .regular.tint(tint!) : .regular,
-                in: .rect(cornerRadius: 20)
-            )
+            .glassEffect(glass, in: .rect(cornerRadius: 20))
     }
 }
