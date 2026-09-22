@@ -1,17 +1,21 @@
-//
-//  BolzaApp.swift
-//  Bolza
-//
-//  Created by Joshua Masih on 9/2/26.
-//
-
 import SwiftUI
+import SwiftData
 
 @main
 struct BolzaApp: App {
+    @State private var tutorService = TutorService()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environment(tutorService)
         }
+        .modelContainer(for: [
+            UserProfile.self,
+            LanguageCourse.self,
+            LessonNode.self,
+            LessonProgress.self,
+            DailyStreak.self
+        ])
     }
 }
